@@ -1,0 +1,35 @@
+buildscript {
+    ext {
+        lombok = 'org.projectlombok:lombok:1.18.12'
+        jupiterVersion = '5.8.1'
+
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'com.barinikhil'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}"
+    testImplementation "org.mockito:mockito-core:2.19.0"
+
+    compileOnly lombok
+    annotationProcessor lombok
+    testCompileOnly lombok
+    testAnnotationProcessor lombok
+}
+
+test {
+    useJUnitPlatform()
+}
